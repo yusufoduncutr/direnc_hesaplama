@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direnç Hesaplama</title>
+</head>
+<body>7
+    <h1>Direnç Hesaplama</h1>
+    <form id="dirençHesaplamaForm">
+        <label for="direnc1">Direnç 1 (Ohm):</label>
+        <input type="number" id="direnc1" name="direnc1" required>
+        <br>
+
+        <label for="direnc2">Direnç 2 (Ohm):</label>
+        <input type="number" id="direnc2" name="direnc2" required>
+        <br>
+
+        <label for="direnc3">Direnç 3 (Ohm):</label>
+        <input type="number" id="direnc3" name="direnc3" required>
+        <br>
+
+        <input type="button" value="Hesapla" onclick="hesaplaDirenç()">
+    </form>
+
+    <p>Seri Bağlantı Sonucu: <span id="seriSonuc"></span> Ohm</p>
+    <p>Paralel Bağlantı Sonucu: <span id="paralelSonuc"></span> Ohm</p>
+
+    <script>
+        function hesaplaDirenç() {
+            const direnc1 = parseFloat(document.getElementById("direnc1").value);
+            const direnc2 = parseFloat(document.getElementById("direnc2").value);
+            const direnc3 = parseFloat(document.getElementById("direnc3").value);
+
+            const seriSonuc = direnc1 + direnc2 + direnc3;
+            const paralelSonuc = 1 / ((1 / direnc1) + (1 / direnc2) + (1 / direnc3));
+
+            document.getElementById("seriSonuc").textContent = seriSonuc.toFixed(2);
+            document.getElementById("paralelSonuc").textContent = paralelSonuc.toFixed(2);
+        }
+    </script>
+</body>
+</html>
